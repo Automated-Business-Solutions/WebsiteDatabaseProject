@@ -3,6 +3,7 @@ import { updateProfile, Auth, signInWithEmailAndPassword, user, signOut } from "
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 import { Observable, from } from "rxjs";
 import { UserInterface } from "./user.interface";
+import { HttpClient } from "@angular/common/http";
 
 
 @Injectable({
@@ -12,6 +13,7 @@ export class AuthService {
     firebaseAuth = inject(Auth); 
     user$ = user(this.firebaseAuth)
     currentUserSig = signal<UserInterface | null | undefined>(undefined) 
+    private http = inject(HttpClient); // For fetching user role from server
 
     register(email: string, username: string, password: string): 
     Observable<void>{
@@ -38,6 +40,11 @@ export class AuthService {
         return from(promise);
     }
 
+    getUserRole(): UserInterface | null {
+        const currentUser = this.firebaseAuth.currentUser;
+        return currentUser ? { email: currentUser.email!, username: currentUser.displayName! } : null;
+  }
+
 }
     
-
+        

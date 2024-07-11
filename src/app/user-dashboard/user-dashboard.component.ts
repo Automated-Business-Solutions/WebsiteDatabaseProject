@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -12,9 +12,10 @@ import { Router } from '@angular/router';
   templateUrl: './user-dashboard.component.html',
   styleUrl: './user-dashboard.component.css'
 })
-export class UserDashboardComponent {
+export class UserDashboardComponent implements OnInit {
 
   authService = inject(AuthService);
+  router = inject(Router)
 
   ngOnInit(): void{
     this.authService.user$.subscribe(user => {
@@ -34,6 +35,8 @@ export class UserDashboardComponent {
 
 
   logOut(): void{
-    console.log('logout')
+    this.authService.logout();
+    this.router.navigate(['/login']);
+    
   }
 }

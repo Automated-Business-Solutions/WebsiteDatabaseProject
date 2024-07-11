@@ -1,35 +1,19 @@
-<head>
+  
 
- 
-
-</head>
-
-<body>
-
-  <h1>
-    hi
-    sa
-    aaa 
-
-
-  </h1>
-
-
+  @if (authService.currentUserSig() == null){
+    
+      
+    
+  }
+  
   @if (authService.currentUserSig()){
+
       
   <div>
-    <button type="submit">LogOut</button>
 
+    <button (click)="logOut()">Logout</button>
   </div>
 
-  }
-  @else {
-    <h1>
-      hi2222
-    </h1>
-  }
 
-  
-  
 
-</body>
+}
