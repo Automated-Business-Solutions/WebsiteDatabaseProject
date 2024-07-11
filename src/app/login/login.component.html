@@ -1,0 +1,31 @@
+@if (authService.currentUserSig() == null){
+    
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.component.css">
+</head>
+<body>
+    <div id="contenedor">
+        <div id="central">
+            <div id="login">
+                <div class="titulo">
+                    Bienvenido
+                </div>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <input type="email" formControlName="email" placeholder="Correo electrónico" required>
+                    <input type="password" formControlName="password" placeholder="Contraseña" required>
+                    <button type="submit">Login</button>
+                </form>
+                <div *nglf="errorMessage" class="error">{{ errorMessage }}</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
