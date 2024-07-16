@@ -73,7 +73,7 @@
         </style>
     </head>
     <body>
-        <div *ngIf="authService.currentUserSig()"> <!--  check if user is loged in, then code runs. -->
+        <div *ngIf="authService.currentUserSig() else loginRedirect" > <!--  check if user is loged in, then code runs. -->
             <div class="header">
                 <div class="menu"> 
                     <a (click)="navigateToAdminHome()">Home </a> <!--permamencer dentro del /admin-->
@@ -88,12 +88,19 @@
                     <div class="square" id="usuarios" (click)="navigateToUsuarios()">Usuarios</div>
                     <div class="square" id="vehiculos">Vehículos</div>
                     <div class="square" id="configuracion">Configuración</div>
-                    <div class="square" id="reportes">Reportes</div>
+                    <div class="square" id="register" (click)="navigateToRegister()">register</div>
                     <div class="square" id="soporte">Soporte</div>
                     <div class="square" id="ajustes">Ajustes</div>
                 </div>
             </div>
         </div>
+
+        <ng-template #loginRedirect>
+            
+        </ng-template>
+
     </body>
+
 </html>
+
 

@@ -2,20 +2,25 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../auth.service';
+import { FormsModule } from '@angular/forms'; // Importa FormsModule
+
+
 
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormsModule],
 })
 export class RegisterComponent {
   fb = inject(FormBuilder);
   http = inject(HttpClient);
   authService = inject(AuthService);
   router = inject(Router);
+  isChecked = false;
+
 
   form = this.fb.nonNullable.group({
     username: ['', Validators.required],
@@ -37,4 +42,7 @@ export class RegisterComponent {
       }
     })
   } 
+
 } 
+
+

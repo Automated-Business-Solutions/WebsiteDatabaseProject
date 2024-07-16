@@ -40,10 +40,7 @@ export class AuthService {
         return from(promise);
     }
 
-    getUserRole(): UserInterface | null {
-        const currentUser = this.firebaseAuth.currentUser;
-        return currentUser ? { email: currentUser.email!, username: currentUser.displayName! } : null;
-  }
+
 
 }
     

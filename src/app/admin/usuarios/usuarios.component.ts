@@ -22,7 +22,8 @@ export class UsuariosComponent {
       if (user)  {
         this.authService.currentUserSig.set({
           email: user.email!,
-          username: user.displayName!
+          username: user.displayName!,
+          uid: user.uid!
         });
       }
       else

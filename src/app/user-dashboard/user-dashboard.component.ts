@@ -22,7 +22,10 @@ export class UserDashboardComponent implements OnInit {
       if (user)  {
         this.authService.currentUserSig.set({
           email: user.email!,
-          username: user.displayName!
+          username: user.displayName!,
+          uid: user.uid!,
+           
+
         });
       }
       else

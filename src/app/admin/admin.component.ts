@@ -22,7 +22,8 @@ export class AdminComponent implements OnInit {
       if (user)  {
         this.authService.currentUserSig.set({
           email: user.email!,
-          username: user.displayName!
+          username: user.displayName!,
+          uid: user.uid!
         });
       }
       else
@@ -42,9 +43,20 @@ export class AdminComponent implements OnInit {
    navigateToUsuarios() {
     this.router.navigate(['admin/usuarios']);
   }
-  navigateToAdminHome()
+
+  navigateToLogin()
   {
-    this.router.navigate(['admin'])
+    this.router.navigate(['/login'])
   }
 
+  navigateToAdminHome()
+  {
+    this.router.navigate(['/admin'])
   }
+
+  navigateToRegister()
+  {
+    this.router.navigate(['/admin/register'])
+  }
+
+}
